@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.interval.service.dao.UserDao">
+
+    <sql id="allColumnsAlias">
+		id as id ,account as account ,password as password ,phone as phone ,nick_name as nickName ,
+		birthday as birthday ,img_url as imgUrl ,sex as sex ,role_id as roleId ,status as status ,
+		qq_open_id as qqOpenId ,weixin_opne_id as weixinOpneId ,school_id as schoolId ,
+		vip_start_time as vipStartTime ,vip_end_time AS vipEndTime,gmt_create as gmtCreate ,gmt_modified as gmtModified
+	</sql>
+
+    <select id="query" parameterType="java.util.Map" resultType="com.interval.service.model.UserEntity">
+        select
+        <include refid="allColumnsAlias"/>
+        from user
+        <where>
+            <if test="account!=null and account!=''">
+                and account = #{account}
+            </if>
+            <if test="password!=null and password!=''">
+               and password = #{password}
+            </if>
+            <if test="phone!=null and phone!=''">
+                and phone = #{phone}
+            </if>
+            <if test="schoolId!=null and schoolId!=''">
+                and school_id = #{schoolId}
+            </if>
+            <if test="sex!=null ">
+                and sex = #{sex}
+            </if>
+            <if test="sex!=null ">
+                and sex = #{sex}
+            </if>
+        </where>
+
+    </select>
+</mapper>

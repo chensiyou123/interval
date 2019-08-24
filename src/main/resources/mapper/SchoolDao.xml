@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.interval.service.dao.SchoolDao">
+
+	<!-- 可根据自己需要-->
+	<sql id="allColumnsAlias">
+		id as id ,school_name as schoolName ,status as status ,gmt_create as gmtCreate ,gmt_modified as gmtModified
+	</sql>
+	<!-- 可根据自己需要-->
+	<sql id="allColumns">
+		id ,school_name ,status ,gmt_create ,gmt_modified
+	</sql>
+
+	<select id="query" parameterType="java.util.Map" resultType="com.interval.service.model.SchoolEntity">
+		select
+		<include refid="allColumns"/>
+		from school
+		<where>
+			<if test="id!=null and id!='' ">
+				and id=#{id}
+			</if>
+			<if test="schoolName!=null and schoolName!='' ">
+				and school_name=#{schoolName}
+			</if>
+			<if test="status!=null">
+				and status=#{status}
+			</if>
+		</where>
+	</select>
+
+
+</mapper>
