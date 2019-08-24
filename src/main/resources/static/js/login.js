@@ -23,4 +23,5 @@ function login() {
         "account":account,
         "password":password
     }
+    commonAjax("/web/login/login",null,null,data,"loginBack")
 }

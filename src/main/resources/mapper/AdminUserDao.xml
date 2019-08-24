@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.interval.service.dao.AdminUserDao">
+
+    <sql id="allColumnsAlias">
+		id as id ,
+		account as account ,
+		password as password ,
+		nick_name as  nickName ,
+		role_id as roleId ,
+		school_id as schoolId,
+		status as status ,
+		gmt_create as gmtCreate ,
+		gmt_modified as gmtModified
+	</sql>
+
+    <select id="query" parameterType="java.util.Map" resultType="com.interval.service.model.AdminUserEntity">
+        select
+        <include refid="allColumnsAlias"/>
+        from admin_user
+        <where>
+            <if test="account!=null and account!=''">
+                account = #{account}
+            </if>
+            <if test="password!=null and password!=''">
+               and password = #{password}
+            </if>
+        </where>
+
+    </select>
+</mapper>
