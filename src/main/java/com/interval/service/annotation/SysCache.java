@@ -1,4 +1,4 @@
-package com.interval.service.controller.annotation;
+package com.interval.service.annotation;
 
 import java.lang.annotation.*;
 

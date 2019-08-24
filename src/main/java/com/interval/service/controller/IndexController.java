@@ -1,6 +1,6 @@
 package com.interval.service.controller;
 
-import com.interval.service.controller.annotation.SysTimeLog;
+import com.interval.service.annotation.SysTimeLog;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,4 +20,5 @@ public class IndexController {
     public Object index(){
         return "homePage";
     }
+
 }
