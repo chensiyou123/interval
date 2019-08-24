@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <configuration>
+        <include resource="org/springframework/boot/logging/logback/base.xml" />
+        <!-- 按照每天生成日志文件 -->
+        <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <!--日志文件输出的文件名 -->
+                <FileNamePattern>${user.dir}/logs/interval.%d{yyyy-MM-dd}.log </FileNamePattern>
+                <!--日志文件保留天数 -->
+                <MaxHistory>30</MaxHistory>
+            </rollingPolicy>
+            <!--日志文件最大的大小 -->
+            <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+                <MaxFileSize>5MB</MaxFileSize>
+            </triggeringPolicy>
+            <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+                <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符 -->
+                <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg %n</pattern> </encoder>
+        </appender>
+
+        <appender name="logstash" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+            <param name="Encoding" value="UTF-8"/>
+            <remoteHost>39.106.39.142</remoteHost>
+            <port>5672</port>
+            <encoder class="net.logstash.logback.encoder.LogstashEncoder" chaset="UTF-8">
+                <customFields>{"appname":"interval"}</customFields>
+            </encoder>
+            <keepAliveDuration>5 minutes</keepAliveDuration>
+        </appender>
+
+        <springProfile name="production">
+            <logger name="com.interval.service" level="debug"/>
+            <root level="debug">
+                <appender-ref ref="FILE" />
+            </root>
+        </springProfile>
+
+        <springProfile name="formal">
+            <logger name="com.interval.service" level="debug"/>
+            <root level="debug">
+                <appender-ref ref="FILE" />
+            </root>
+            <root level="INFO">
+                <appender-ref ref="logstash" />
+            </root>
+        </springProfile>
+
+    </configuration>
