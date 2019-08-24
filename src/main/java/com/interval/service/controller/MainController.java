@@ -31,7 +31,6 @@ public class MainController {
      */
     @GetMapping("/index")
     public Object index(HttpServletRequest request){
-        log.info(request.getSession().getAttribute("userType").toString());
         if ("0".equals(request.getSession().getAttribute("userType").toString())){
             request.setAttribute("checkUrl","index");
             //查询今日新增用户数
