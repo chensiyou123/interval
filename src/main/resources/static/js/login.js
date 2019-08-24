@@ -25,3 +25,16 @@ function login() {
     }
     commonAjax("/web/login/login",null,null,data,"loginBack")
 }
+
+function loginBack(res) {
+    openAlert(res.msg);
+    console.log("login==>")
+    if (res.code == 0){
+        if (res.data == 0){
+            setTimeout(function(){window.location.href="/web/main/index";},1000)
+        } else if (res.data == 1){
+            setTimeout(function(){window.location.href="/web/section/toUserSectionList";},1000)
+        }
+
+    }
+}

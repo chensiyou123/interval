@@ -62,7 +62,7 @@ public class AdminUserServiceImpl implements AdminUserService {
                 }
                 request.getSession().setAttribute("userType", UserTypeEnum.USER.getValue());
                 request.getSession().setAttribute("user",userList.get(0));
-                return R.ok("登录成功").put("data",0);
+                return R.ok("登录成功").put("data",UserTypeEnum.USER.getValue());
             }
         }else {
             if (adminUserEntitys.get(0).getStatus() == 1){
@@ -82,7 +82,7 @@ public class AdminUserServiceImpl implements AdminUserService {
 
                 request.getSession().setAttribute("userType",UserTypeEnum.ADMIN.getValue());
                 request.getSession().setAttribute("user",adminUserEntitys.get(0));
-                return R.ok("登录成功").put("data",0);
+                return R.ok("登录成功").put("data",UserTypeEnum.ADMIN.getValue());
             }
         }
         return null;
