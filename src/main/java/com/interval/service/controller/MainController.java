@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.math.BigDecimal;
+import java.util.HashMap;
 import java.util.Objects;
 
 /**
@@ -41,9 +43,9 @@ public class MainController {
             //查询今日新增用户数
             int todayUser = lockRedisUtils.getNewUserCount();
             //查询今日收入
-            // BigDecimal todayIncome = lockRedisUtils.getTodayIncomeCount();
+             BigDecimal todayIncome = lockRedisUtils.getTodayIncomeCount();
             request.setAttribute("todayUser",todayUser);
-            //  request.setAttribute("todayIncome",todayIncome);
+              request.setAttribute("todayIncome",todayIncome);
             return "index";
         }else{
             request.setAttribute("checkUrl","indexNormal");

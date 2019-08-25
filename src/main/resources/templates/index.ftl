@@ -16,6 +16,63 @@
 <div class="am-g tpl-g">
     <#include "common/header.ftl">
     <#include "common/left.ftl">
+    <!-- 内容区域 -->
+    <!-- 内容区域 -->
+    <div class="tpl-content-wrapper">
+        <div class="row-content am-cf">
+            <div class="row  am-cf">
+                <div class="am-u-sm-12 am-u-md-6 am-u-lg-6">
+                    <div class="widget widget-primary am-cf">
+                        <div class="widget-statistic-header">
+                            今日收入
+                        </div>
+                        <div class="widget-statistic-body">
+                            <div class="widget-statistic-value">
+                                ￥<span id="todayMoney">${Request.todayIncome}</span>
+                            </div>
+                            <div class="widget-statistic-description"></div>
+                            <span class="widget-statistic-icon am-icon-credit-card-alt"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="am-u-sm-12 am-u-md-6 am-u-lg-6">
+                    <div class="widget widget-purple am-cf">
+                        <div class="widget-statistic-header">
+                            今日新增用户数
+                        </div>
+                        <div class="widget-statistic-body">
+                            <div class="widget-statistic-value">
+                                <span id="todayNewUser">${Request.todayUser}</span>
+                            </div>
+                            <div class="widget-statistic-description">
+                            </div>
+                            <span class="widget-statistic-icon am-icon-support"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row am-cf">
+                <div class="am-u-sm-12 am-u-md-6">
+                    <div class="widget am-cf">
+                        <div class="widget-head am-cf">
+                            <div class="widget-title am-fl">近七天收入趋势</div>
+                        </div>
+                        <div class="widget-body-md widget-body tpl-amendment-echarts am-fr" id="echarts-money"></div>
+                    </div>
+                </div>
+                <div class="am-u-sm-12 am-u-md-6">
+                    <div class="widget am-cf">
+                        <div class="widget-head am-cf">
+                            <div class="widget-title am-fl">近七天新增人数趋势</div>
+                        </div>
+                        <div class="widget-body-md widget-body tpl-amendment-echarts am-fr" id="echarts-user">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script type="text/javascript" src="${request.contextPath }/amazeui/js/jquery.min.js"></script>
