@@ -15,6 +15,7 @@
 <#include "common/taglib.ftl">
 <div class="am-g tpl-g">
     <#include "common/header.ftl">
+    <#include "common/left.ftl">
 </div>
 
 <script type="text/javascript" src="${request.contextPath }/amazeui/js/jquery.min.js"></script>
