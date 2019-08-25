@@ -14,7 +14,7 @@ spring:
     driverClassName : com.mysql.jdbc.Driver
 
   redis:
-    host: 47.106.119.122
+    host: 192.168.247.130
     port: 6379
     database: 0
     timeout: 6000  # 连接超时时长（毫秒）
