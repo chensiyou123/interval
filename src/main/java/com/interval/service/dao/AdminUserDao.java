@@ -1,14 +1,14 @@
 package com.interval.service.dao;
 
+import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.interval.service.model.AdminUserEntity;
-import com.interval.service.utils.BaseDao;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Map;
 
 @Repository
-public interface AdminUserDao  extends BaseDao<AdminUserEntity> {
+public interface AdminUserDao  extends BaseMapper<AdminUserEntity> {
     /**
      * 条件查询用户信息
      * @param map{

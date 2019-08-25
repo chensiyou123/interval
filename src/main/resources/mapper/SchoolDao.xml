@@ -29,5 +29,13 @@
 		</where>
 	</select>
 
+	<select id="queryTotal" parameterType="java.util.Map" resultType="int" >
+		select count(*) from school
+		<trim prefix="where" prefixOverrides="AND|OR">
+			<if test="schoolName != null and schoolName != ''">
+				and school_name like CONCAT(CONCAT('%',#{schoolName}),'%')
+			</if>
+		</trim>
+	</select>
 
 </mapper>

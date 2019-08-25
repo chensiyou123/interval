@@ -44,3 +44,30 @@ function commonAjax(url, type, dataType, data, callBack) {
         }
     });
 }
+
+
+/**
+ * 通用iframe异步加载弹出框
+ * @param url
+ * @param iWidth
+ * @param iHeight
+ */
+function openWin(url, title, iWidth, iHeight) {
+    //通过这种方式弹出的层，每当它被选择，就会置顶。
+    if (!iWidth)iWidth = window.screen.availWidth * 0.5;//浏览器窗口70%的宽度
+    if (!iHeight)iHeight = window.screen.availHeight * 0.6;//浏览器窗口80%的高度
+    if (!title)title = "信息";
+    var offset = window.screen.availHeight / 2 - iHeight / 2;
+    return layer.open({
+        title: title,
+        offset: offset + 'px',
+        type: 2,//0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
+        shade: [0.3, '#393D49'],
+        area: [iWidth + 'px', iHeight + 'px'],
+        maxmin: true,
+        content: url,
+        success: function (layero, index) {
+            $(layero).attr("title", "ESC快捷键可以退出当前窗口");
+        }
+    })
+}

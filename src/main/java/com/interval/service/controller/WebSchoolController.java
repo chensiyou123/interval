@@ -26,6 +26,6 @@ public class WebSchoolController {
         int total = schoolService.queryTotal(null);
         request.setAttribute("total",total);
         request.setAttribute("checkUrl","schoolIndex");
-        return "index";
+        return "school/school";
     }
 }
