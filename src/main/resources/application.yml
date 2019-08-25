@@ -25,6 +25,9 @@ spring:
     http:
     multipart:
       max-file-size: 200MB
+    cache: false
+    settings:
+      template_update_delay: 0
 interval:
   log:
     time: true  #是否开启日志计时,默认开启

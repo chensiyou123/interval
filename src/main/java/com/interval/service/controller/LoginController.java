@@ -44,4 +44,13 @@ public class LoginController {
     public R login(@RequestParam Map map, HttpServletRequest request){
         return adminUserService.login(map,request);
     }
+
+    @ApiOperation(value = "退出登陆")
+    @GetMapping("/logout")
+    @ResponseBody
+    public R logout(HttpServletRequest request){
+        request.getSession().removeAttribute("user");
+        request.getSession().removeAttribute("userType");
+        return R.ok("退出登录成功");
+    }
 }
