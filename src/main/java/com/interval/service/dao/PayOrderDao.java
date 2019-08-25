@@ -9,6 +9,11 @@ import java.util.Map;
 
 @Repository
 public interface PayOrderDao extends BaseMapper<PayOrderEntity> {
+    /**
+     * 今天订单总金额
+     * @param map
+     * @return
+     */
     BigDecimal getTodayIncome(Map map);
 
 }

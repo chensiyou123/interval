@@ -3,13 +3,10 @@ package com.interval.service.component;
 import com.interval.service.dao.PayOrderDao;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.support.atomic.RedisAtomicInteger;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.util.Objects;
-import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 @Component
@@ -27,6 +24,10 @@ public class LockRedisUtils {
     private final ReentrantReadWriteLock newUserCountLock = new ReentrantReadWriteLock();
     private final ReentrantReadWriteLock incomeCountLock = new ReentrantReadWriteLock();
 
+    /**
+     * 今天新增用户数
+     * @return
+     */
     public int getNewUserCount(){
         //加上读锁，其它线程可读不可写
         if (!newUserCountLock.isWriteLockedByCurrentThread()){
@@ -44,6 +45,10 @@ public class LockRedisUtils {
         return Objects.isNull(count)?0:count;
     }
 
+    /**
+     * 查询今天订单总金额
+     * @return
+     */
     public BigDecimal getTodayIncomeCount(){
         //加上读锁，其它线程可读不可写
         if (!incomeCountLock.isWriteLockedByCurrentThread()){
